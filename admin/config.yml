@@ -1,13 +1,13 @@
+
 backend:
   name: github
-  # GANTI dengan nama akun GitHub dan repositori Anda yang sebenarnya
-  repo: 0rch1dL4bs/tokoroti 
+  repo: 0rch1dL4bs/tokoroti
   branch: main
-  base_url: https://azizah-oauth.kakakuku8963.workers.dev/
+  base_url: https://azizah-oauth.kakakuku8963.workers.dev
+  auth_endpoint: /auth
 
-# Pengaturan folder penyimpanan gambar yang diunggah admin
 media_folder: "images"
-public_folder: "./images"
+public_folder: "/images"
 
 collections:
   - name: "katalog"
@@ -21,9 +21,22 @@ collections:
             name: "products"
             widget: "list"
             fields:
-              - {label: "ID Roti (Angka Unik)", name: "id", widget: "number"}
-              - {label: "Nama Roti", name: "name", widget: "string"}
-              - {label: "Harga (Rupiah)", name: "price", widget: "number"}
-              - {label: "Gambar", name: "img", widget: "image"}
-              - {label: "Deskripsi Singkat", name: "desc", widget: "text"}
-              - {label: "Status: Ready Hari Ini?", name: "isReadyToday", widget: "boolean", default: true}
+              - label: "ID Roti (Angka Unik)"
+                name: "id"
+                widget: "number"
+              - label: "Nama Roti"
+                name: "name"
+                widget: "string"
+              - label: "Harga (Rupiah)"
+                name: "price"
+                widget: "number"
+              - label: "Gambar"
+                name: "img"
+                widget: "image"
+              - label: "Deskripsi Singkat"
+                name: "desc"
+                widget: "text"
+              - label: "Status: Ready Hari Ini?"
+                name: "isReadyToday"
+                widget: "boolean"
+                default: true

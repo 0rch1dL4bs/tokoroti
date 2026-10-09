@@ -5,24 +5,24 @@ const R2_BASE_URL = "https://pub-xxxxxxxx.r2.dev";
 const products = [
     {
         id: 1,
-        name: "Sourdough Artisan",
-        price: 45000,
+        name: "Garlic Bread",
+        price: 10000,
         img: `${R2_BASE_URL}/sourdough-artisan.jpg`, 
-        desc: "Fermentasi alami 24 jam.",
+        desc: "Dibuat dari baham alami",
         isReadyToday: true // Produk tersedia hari ini
     },
     {
         id: 2,
-        name: "Croissant Butter",
-        price: 25000,
+        name: "Roti Coklat",
+        price: 8000,
         img: `${R2_BASE_URL}/croissant.jpg`,
         desc: "Renyah di luar, lembut di dalam.",
         isReadyToday: false // Produk TIDAK tersedia hari ini
     },
     {
         id: 3,
-        name: "Roti Gandum Utuh",
-        price: 30000,
+        name: "Fudgie Brownies",
+        price: 10000,
         img: `${R2_BASE_URL}/gandum-utuh.jpg`,
         desc: "Kaya serat, tanpa pengawet.",
         isReadyToday: true // Produk tersedia hari ini

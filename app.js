@@ -1,31 +1,28 @@
-// Konfigurasi Endpoint Cloudflare R2
-const R2_BASE_URL = "https://pub-xxxxxxxx.r2.dev"; 
-
-// Data Mockup Backend (Katalog Produk)
+// Array Produk Statis
 const products = [
     {
         id: 1,
         name: "Garlic Bread",
-        price: 10000,
-        img: `${R2_BASE_URL}/sourdough-artisan.jpg`, 
-        desc: "Dibuat dari baham alami",
-        isReadyToday: true // Produk tersedia hari ini
+        price: 15000,
+        img: "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80",
+        desc: "Wangi gurih bawang putih dan butter premium.",
+        isReadyToday: true
     },
     {
         id: 2,
-        name: "Roti Coklat",
-        price: 8000,
-        img: `${R2_BASE_URL}/croissant.jpg`,
-        desc: "Renyah di luar, lembut di dalam.",
-        isReadyToday: false // Produk TIDAK tersedia hari ini
+        name: "Fudgie Brownies",
+        price: 45000,
+        img: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&q=80",
+        desc: "Nyoklat banget, fudgy di dalam, crusty di luar.",
+        isReadyToday: true
     },
     {
         id: 3,
-        name: "Fudgie Brownies",
-        price: 10000,
-        img: `${R2_BASE_URL}/gandum-utuh.jpg`,
-        desc: "Kaya serat, tanpa pengawet.",
-        isReadyToday: true // Produk tersedia hari ini
+        name: "Sourdough Artisan",
+        price: 45000,
+        img: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=600&q=80",
+        desc: "Fermentasi alami 24 jam. Tanpa ragi instan.",
+        isReadyToday: false
     }
 ];
 
@@ -36,24 +33,21 @@ function renderProducts() {
     grid.innerHTML = ''; 
 
     products.forEach(product => {
-        // Cek ketersediaan produk
         const isAvailable = product.isReadyToday;
 
         const card = document.createElement('div');
-        // Tambahkan class 'unavailable' jika isReadyToday bernilai false
+        // Class 'unavailable' dikendalikan dari CSS untuk efek buram
         card.className = `card ${!isAvailable ? 'unavailable' : ''}`;
         
-        // Gunakan properti 'disabled' pada button HTML secara native
         card.innerHTML = `
             <img src="${product.img}" alt="${product.name}" loading="lazy">
             <div class="card-content">
                 <h3>${product.name}</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">${product.desc}</p>
+                <p>${product.desc}</p>
                 <span class="price">Rp ${product.price.toLocaleString('id-ID')}</span>
                 
                 <button class="btn-primary w-100" 
-                    ${isAvailable ? `onclick="addToCart(${product.id})"` : 'disabled'} 
-                    style="width:100%">
+                    ${isAvailable ? `onclick="addToCart(${product.id})"` : 'disabled'} >
                     ${isAvailable ? 'Tambah ke Keranjang' : 'Habis / Tidak Ready'}
                 </button>
             </div>
@@ -63,16 +57,16 @@ function renderProducts() {
 }
 
 window.addToCart = function(productId) {
-    // Validasi ekstra di level fungsi untuk keamanan tambahan di sisi klien
     const targetProduct = products.find(p => p.id === productId);
-    if (!targetProduct || !targetProduct.isReadyToday) {
-        console.warn("Aksi ditolak: Produk tidak tersedia hari ini.");
-        return;
-    }
+    if (!targetProduct || !targetProduct.isReadyToday) return;
 
     cart += 1;
     document.getElementById('cart-count').innerText = cart;
-    console.log(`Produk ID ${productId} ditambahkan. Total item: ${cart}`);
+    
+    // Opsional: Notifikasi sederhana
+    alert(`${targetProduct.name} berhasil ditambahkan ke keranjang!`);
 };
 
 document.addEventListener('DOMContentLoaded', renderProducts);
+``` *(Catatan: URL gambar di atas menggunakan contoh gambar roti dari Unsplash agar Anda bisa langsung melihat efek profesionalnya. Anda bisa menggantinya kembali dengan URL R2/lokal Anda nanti).*
+

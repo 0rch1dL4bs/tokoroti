@@ -1,102 +1,253 @@
+/* --- CSS VARIABLES (Palet Warna & Tipografi) --- */
 :root {
-    --primary-color: #d97706;
-    --bg-color: #fcfaf8;
-    --card-bg: #ffffff;
-    --text-main: #334155;
-    --border-radius: 8px;
+    --primary-color: #8C5535; /* Cokelat Roti */
+    --primary-hover: #6D4128;
+    --accent-color: #E8D8C8; /* Krem Gandum */
+    --bg-color: #FAFAF7; /* Putih Tulang / Warm White */
+    --text-main: #333333;
+    --text-muted: #666666;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* --- RESET & DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
 }
 
-.container { width: 90%; max-width: 1200px; margin: auto; }
-
-/* Navbar */
+/* --- NAVIGASI --- */
 .navbar {
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    padding: 1rem 0;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 100;
 }
-.navbar-content { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.5rem; color: var(--primary-color); }
 
-/* Buttons */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.cart-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.badge {
+    background-color: #D9534F;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    /* Mengambil gambar bakery gratis berkualitas tinggi dari Unsplash */
+    background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Efek gelap agar teks terbaca */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    max-width: 600px;
+    padding: 0 2rem;
+}
+
+.hero-content h2 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- KONTEN UTAMA & GRID --- */
+.container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* --- PRODUCT CARD STYLING --- */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+/* --- TOMBOL --- */
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-body);
     cursor: pointer;
-    font-weight: bold;
-    transition: opacity 0.2s;
-}
-.btn-primary:hover { opacity: 0.9; }
-
-/* Hero Section */
-.hero { text-align: center; padding: 3rem 0; }
-.hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
-
-/* Grid Produk */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding-bottom: 3rem;
+    transition: background-color 0.2s ease;
 }
 
-/* Product Card */
-.card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
 }
-.card:hover { transform: translateY(-5px); }
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background-color: #e2e8f0; /* Fallback skeleton color */
-}
-.card-content { padding: 1.5rem; }
-.card-content h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.price { color: var(--primary-color); font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: block;}
 
+/* --- EFEK ROTI TIDAK READY (DISABLED STATE) --- */
+.card.unavailable {
+    opacity: 0.6;
+    filter: grayscale(60%);
+}
+
+.card.unavailable:hover {
+    transform: none; /* Nonaktifkan efek naik saat di-hover */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.card.unavailable img {
+    pointer-events: none;
+}
+
+.card.unavailable button:disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+}
+
+/* --- FOOTER --- */
 footer {
+    background-color: #222;
+    color: #aaa;
     text-align: center;
-    padding: 2rem 0;
-    background-color: var(--card-bg);
-    margin-top: 2rem;
+    padding: 2rem;
+    margin-top: 4rem;
     font-size: 0.9rem;
 }
 
-/* Menambahkan efek buram dan mematikan interaksi pada card */
-.card.unavailable {
-    opacity: 0.6; /* Membuat elemen lebih transparan */
-    filter: grayscale(80%); /* Memberikan efek abu-abu agar terlihat tidak aktif */
-}
-
-/* Memastikan gambar di dalam card yang tidak aktif juga terpengaruh */
-.card.unavailable img {
-    pointer-events: none; 
-}
-
-/* Modifikasi tampilan tombol saat berstatus disabled */
-.card.unavailable button:disabled {
-    background-color: #a0a0a0;
-    color: #ffffff;
-    cursor: not-allowed;
-    border: none;
-    pointer-events: auto; /* Memastikan kursor 'not-allowed' tetap terdeteksi oleh browser */
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
 }

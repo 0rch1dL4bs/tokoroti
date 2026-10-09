@@ -3,6 +3,7 @@ backend:
   # GANTI dengan nama akun GitHub dan repositori Anda yang sebenarnya
   repo: 0rch1dL4bs/tokoroti 
   branch: main
+  base_url: https://azizah-oauth.kakakuku8963.workers.dev/
 
 # Pengaturan folder penyimpanan gambar yang diunggah admin
 media_folder: "images"

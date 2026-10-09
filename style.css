@@ -1,0 +1,102 @@
+:root {
+    --primary-color: #d97706;
+    --bg-color: #fcfaf8;
+    --card-bg: #ffffff;
+    --text-main: #334155;
+    --border-radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container { width: 90%; max-width: 1200px; margin: auto; }
+
+/* Navbar */
+.navbar {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.navbar-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; color: var(--primary-color); }
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+/* Hero Section */
+.hero { text-align: center; padding: 3rem 0; }
+.hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+
+/* Grid Produk */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+/* Product Card */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); }
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #e2e8f0; /* Fallback skeleton color */
+}
+.card-content { padding: 1.5rem; }
+.card-content h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.price { color: var(--primary-color); font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: block;}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--card-bg);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Menambahkan efek buram dan mematikan interaksi pada card */
+.card.unavailable {
+    opacity: 0.6; /* Membuat elemen lebih transparan */
+    filter: grayscale(80%); /* Memberikan efek abu-abu agar terlihat tidak aktif */
+}
+
+/* Memastikan gambar di dalam card yang tidak aktif juga terpengaruh */
+.card.unavailable img {
+    pointer-events: none; 
+}
+
+/* Modifikasi tampilan tombol saat berstatus disabled */
+.card.unavailable button:disabled {
+    background-color: #a0a0a0;
+    color: #ffffff;
+    cursor: not-allowed;
+    border: none;
+    pointer-events: auto; /* Memastikan kursor 'not-allowed' tetap terdeteksi oleh browser */
+}

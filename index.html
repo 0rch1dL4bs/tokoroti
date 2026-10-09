@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azizah Cake & Bakery</title>
-    <!-- Import Google Fonts untuk tipografi berkelas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,18 +11,19 @@
 </head>
 <body>
 
-    <!-- Navigasi Atas -->
+    <!-- Navigasi -->
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="brand-logo">Azizah Cake</h1>
-            <div class="cart-wrapper">
+            <!-- Keranjang ditambahkan event onclick -->
+            <div class="cart-wrapper" onclick="toggleCartModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 <span id="cart-count" class="badge">0</span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Gambar Utama) -->
+    <!-- Hero Section -->
     <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -32,20 +32,37 @@
         </div>
     </header>
 
-    <!-- Katalog Produk -->
+    <!-- Katalog -->
     <main class="container">
         <div class="section-header">
             <h2 class="section-title">Katalog Hari Ini</h2>
             <p class="section-subtitle">Dibuat terbatas setiap harinya untuk menjaga kualitas.</p>
         </div>
         
-        <!-- Grid produk akan di-inject oleh JavaScript di sini -->
         <div id="product-grid" class="product-grid"></div>
     </main>
 
+    <!-- Modal Keranjang / Checkout -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+            <h2 style="margin-bottom: 1rem; font-family: var(--font-heading);">Keranjang Pesanan</h2>
+            
+            <div id="cart-items-container">
+                <!-- Daftar roti yang dipilih akan masuk sini via JS -->
+            </div>
+
+            <form id="checkout-form" onsubmit="processCheckout(event)" style="margin-top: 1.5rem;">
+                <input type="text" id="cust-name" placeholder="Nama Lengkap" required class="input-field">
+                <input type="tel" id="cust-phone" placeholder="Nomor Telepon / WhatsApp" required class="input-field">
+                <button type="submit" class="btn-primary w-100" style="margin-top: 1rem;">Simulasi Kirim Pesanan</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Azizah Cake. All rights reserved.</p>
+        <p>&copy; 2026 Azizah Cake & Bakery. All rights reserved.</p>
     </footer>
 
     <script src="app.js"></script>

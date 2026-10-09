@@ -1,9 +1,9 @@
-/* --- CSS VARIABLES (Palet Warna & Tipografi) --- */
+/* --- CSS VARIABLES --- */
 :root {
-    --primary-color: #8C5535; /* Cokelat Roti */
+    --primary-color: #8C5535;
     --primary-hover: #6D4128;
-    --accent-color: #E8D8C8; /* Krem Gandum */
-    --bg-color: #FAFAF7; /* Putih Tulang / Warm White */
+    --accent-color: #E8D8C8;
+    --bg-color: #FAFAF7;
     --text-main: #333333;
     --text-muted: #666666;
     
@@ -75,7 +75,6 @@ body {
     position: relative;
     height: 60vh;
     min-height: 400px;
-    /* Mengambil gambar bakery gratis berkualitas tinggi dari Unsplash */
     background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -86,7 +85,7 @@ body {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Efek gelap agar teks terbaca */
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-content {
@@ -141,7 +140,6 @@ body {
     gap: 2rem;
 }
 
-/* --- PRODUCT CARD STYLING --- */
 .card {
     background: #ffffff;
     border-radius: 12px;
@@ -193,7 +191,6 @@ body {
     display: block;
 }
 
-/* --- TOMBOL --- */
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
@@ -211,28 +208,6 @@ body {
     background-color: var(--primary-hover);
 }
 
-/* --- EFEK ROTI TIDAK READY (DISABLED STATE) --- */
-.card.unavailable {
-    opacity: 0.6;
-    filter: grayscale(60%);
-}
-
-.card.unavailable:hover {
-    transform: none; /* Nonaktifkan efek naik saat di-hover */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-}
-
-.card.unavailable img {
-    pointer-events: none;
-}
-
-.card.unavailable button:disabled {
-    background-color: #cccccc;
-    color: #888888;
-    cursor: not-allowed;
-}
-
-/* --- FOOTER --- */
 footer {
     background-color: #222;
     color: #aaa;
@@ -242,12 +217,58 @@ footer {
     font-size: 0.9rem;
 }
 
-/* --- RESPONSIVE MEDIA QUERIES --- */
+/* --- MODAL CHECKOUT --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: var(--font-body);
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
-    .hero-content h2 {
-        font-size: 2.5rem;
-    }
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
+    .hero-content h2 { font-size: 2.5rem; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 }

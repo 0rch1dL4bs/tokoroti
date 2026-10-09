@@ -110,7 +110,7 @@ window.toggleCartModal = function() {
 
 // Simulasi pengiriman form (tanpa Telegram)
 // Ganti dengan nomor WhatsApp Admin/Toko Anda (Gunakan format 62 tanpa + atau 0)
-const WA_ADMIN_NUMBER = "6281347111197"; 
+const WA_ADMIN_NUMBER = "6281316250484"; 
 
 window.processCheckout = function(event) {
     event.preventDefault(); // Mencegah reload halaman

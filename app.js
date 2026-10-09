@@ -4,16 +4,18 @@ const products = [
         id: 1,
         name: "Garlic Bread",
         price: 15000,
+        // Gambar representasi Garlic Bread
         img: "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80",
-        desc: "Wangi gurih bawang putih dan butter premium.",
+        desc: "Wangi gurih dari paduan bawang putih segar, parsley, dan butter premium.",
         isReadyToday: true
     },
     {
         id: 2,
-        name: "Fudgie Brownies",
-        price: 45000,
-        img: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&q=80",
-        desc: "Nyoklat banget, fudgy di dalam, crusty di luar.",
+        name: "Roti Coklat Keju",
+        price: 18000,
+        // Gambar representasi Roti isi/Coklat Keju
+        img: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&q=80",
+        desc: "Roti super lembut dengan isian coklat lumer dan parutan keju gurih.",
         isReadyToday: true
     },
     {
@@ -22,7 +24,7 @@ const products = [
         price: 45000,
         img: "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=600&q=80",
         desc: "Fermentasi alami 24 jam. Tanpa ragi instan.",
-        isReadyToday: false
+        isReadyToday: false // Disembunyikan oleh sistem karena tidak ready
     }
 ];
 
@@ -32,12 +34,12 @@ function renderProducts() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = ''; 
 
-    products.forEach(product => {
-        const isAvailable = product.isReadyToday;
+    // Filter array agar hanya mengambil produk yang ready hari ini
+    const readyProducts = products.filter(product => product.isReadyToday === true);
 
+    readyProducts.forEach(product => {
         const card = document.createElement('div');
-        // Class 'unavailable' dikendalikan dari CSS untuk efek buram
-        card.className = `card ${!isAvailable ? 'unavailable' : ''}`;
+        card.className = 'card'; 
         
         card.innerHTML = `
             <img src="${product.img}" alt="${product.name}" loading="lazy">
@@ -46,9 +48,8 @@ function renderProducts() {
                 <p>${product.desc}</p>
                 <span class="price">Rp ${product.price.toLocaleString('id-ID')}</span>
                 
-                <button class="btn-primary w-100" 
-                    ${isAvailable ? `onclick="addToCart(${product.id})"` : 'disabled'} >
-                    ${isAvailable ? 'Tambah ke Keranjang' : 'Habis / Tidak Ready'}
+                <button class="btn-primary w-100" onclick="addToCart(${product.id})">
+                    Tambah ke Keranjang
                 </button>
             </div>
         `;
@@ -63,10 +64,7 @@ window.addToCart = function(productId) {
     cart += 1;
     document.getElementById('cart-count').innerText = cart;
     
-    // Opsional: Notifikasi sederhana
     alert(`${targetProduct.name} berhasil ditambahkan ke keranjang!`);
 };
 
 document.addEventListener('DOMContentLoaded', renderProducts);
-``` *(Catatan: URL gambar di atas menggunakan contoh gambar roti dari Unsplash agar Anda bisa langsung melihat efek profesionalnya. Anda bisa menggantinya kembali dengan URL R2/lokal Anda nanti).*
-

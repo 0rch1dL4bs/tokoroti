@@ -14,9 +14,9 @@ Sistem ini murni menggunakan arsitektur *frontend* statis tanpa *framework* bera
 ## Cara Menjalankan di Lokal (Local Development)
 Karena aplikasi ini sepenuhnya statis, tidak diperlukan Node.js atau *backend runtime* khusus.
 1. *Clone* repositori ini:
-
+```bash
    git clone https://github.com/0rch1dL4bs/tokoroti.git
-   <br>cd tokoroti
-   <br>python3 -m http.server 8000
+   cd tokoroti
+   python3 -m http.server 8000
 
 Kemudian akses ke http://localhost:8000
